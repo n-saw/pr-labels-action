@@ -1,14 +1,15 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import * as github from "@actions/github";
+import { GitHub } from "@actions/github/lib/utils";
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+    core.debug("Start");
+    const token = core.getInput("github-token", { required: true });
+    const octokit = github.getOctokit(token);
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    //const labelNames = await getPullRequestLabelNames(octokit);
+    //core.debug(`PR label names: ${labelNames}`);
 
     core.setOutput('time', new Date().toTimeString())
   } catch (error) {

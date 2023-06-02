@@ -1,8 +1,8 @@
 {
-  "name": "typescript-action",
-  "version": "0.0.0",
+  "name": "pr-labels-action",
+  "version": "0.1",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "PR Labels action",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
